@@ -1,119 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central Valley Physician Education & Wellness Fund</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Valley Physician Education & Wellness Fund</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+        :root {
+            --primary: #1e40af;
+            --primary-light: #dbeafe;
+            --accent: #dc2626;
+            --accent-soft: #fee2e2;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+            --success: #059669;
+        }
 
-<style>
-/* (your CSS unchanged for brevity) */
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background: #dc2626;
-    color: white;
-    text-decoration: none;
-    border-radius: 0.5rem;
-    font-weight: 600;
-}
-.nav-donate {
-    background: #dc2626;
-    color: white !important;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-}
-</style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.2;
+            animation: slideInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: slideInUp 0.8s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            animation: slideInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: #b91c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            background: var(--bg-white);
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        .about-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            padding: 1.5rem;
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            border-radius: 0.25rem;
+        }
+
+        .highlight-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .program-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .program-card p {
+            color: var(--text-light);
+        }
+
+        /* Mission Section */
+        .mission-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .mission-text {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin: 2rem 0;
+            line-height: 1.8;
+            padding: 2rem;
+            background: var(--primary-light);
+            border-radius: 0.5rem;
+        }
+
+        /* Impact Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+            color: white;
+            border-radius: 0.75rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+            color: white;
+            border-radius: 1rem;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .contact-item a, .contact-item p {
+            color: var(--text-light);
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Utility */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .subtle-section {
+            background: linear-gradient(to bottom, transparent, rgba(30, 64, 175, 0.03));
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--primary);">
+                <svg width="40" height="40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="100" cy="100" r="95" fill="url(#blueGradient)" />
+                  <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                  <path d="M 100 75 C 100 75, 85 60, 75 60 C 65 60, 60 68, 60 75 C 60 88, 75 100, 100 115 C 125 100, 140 88, 140 75 C 140 68, 135 60, 125 60 C 115 60, 100 75, 100 75" 
+                        fill="url(#accentGradient)" opacity="0.9" />
+                  <g transform="translate(100, 95)">
+                    <path d="M -15 -5 L -15 15 Q 0 18, 15 15 L 15 -5" 
+                          fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <line x1="-15" y1="5" x2="15" y2="8" stroke="white" stroke-width="1.5" opacity="0.7" />
+                    <line x1="-15" y1="10" x2="15" y2="13" stroke="white" stroke-width="1.5" opacity="0.7" />
+                  </g>
+                  <g transform="translate(100, 145)" opacity="0.9">
+                    <path d="M -20 0 Q -15 -3, -10 0 T 0 0 T 10 0 T 20 0" 
+                          fill="none" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <path d="M -20 6 Q -15 3, -10 6 T 0 6 T 10 6 T 20 6" 
+                          fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+                  </g>
+                  <circle cx="100" cy="100" r="95" fill="none" stroke="white" stroke-width="3" opacity="0.3" />
+                </svg>
+                <span class="logo" style="margin: 0;">Central Valley Fund</span>
+            </div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- NAV -->
-<nav>
-<div class="nav-container">
-<span class="logo">Central Valley Fund</span>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Empowering EM Residents Through Education & Wellness</h1>
+            <p>Supporting our residency community with resources for professional development and personal wellbeing</p>
+            <a href="https://givebutter.com/central-valley-physician-education-and-wellness-fund-bbji9e" class="cta-button">Support Our Mission</a>
+        </div>
+    </section>
 
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#programs">Programs</a></li>
-<li><a href="#contact">Contact</a></li>
-<li>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About the Fund</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>The Central Valley Physician Education and Wellness Fund is a 501(c)(3) nonprofit dedicated to supporting Emergency Medicine residents in their pursuit of excellence. We believe that a well-educated and healthy resident workforce strengthens our community and improves patient care.</p>
+                    <p>Our residents are not just training to be outstanding physicians—they are actively engaged in serving and caring for our community. This fund ensures they have the resources and support necessary to grow professionally while maintaining their well-being.</p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <h4>🎓 Educational Support</h4>
+                        <p>Scholarships for conferences, courses, and continuing education</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>💚 Wellness Initiatives</h4>
+                        <p>Programs focused on mental health, burnout prevention, and self-care</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>🤝 Community-Centered</h4>
+                        <p>Supporting residents who give back to their communities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs">
+        <div class="container">
+            <h2>What We Fund</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 3rem; font-size: 1.1rem;">We invest in areas that create lasting impact on residents' professional and personal development</p>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">📚</div>
+                    <h3>Educational Conferences</h3>
+                    <p>Sponsorships and scholarships to attend national and regional emergency medicine conferences, enabling residents to stay current with the latest clinical advances.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🧠</div>
+                    <h3>Professional Development</h3>
+                    <p>Support for specialized training, certifications, research opportunities, and skill-building courses that advance resident expertise.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🧘</div>
+                    <h3>Wellness Programs</h3>
+                    <p>Funding for mental health resources, stress management workshops, fitness initiatives, and retreats that promote overall well-being.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">💡</div>
+                    <h3>Innovation & Research</h3>
+                    <p>Support for resident-led research projects and quality improvement initiatives that contribute to the field of emergency medicine.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🤲</div>
+                    <h3>Community Outreach</h3>
+                    <p>Enabling residents to participate in community health initiatives and volunteer programs that serve vulnerable populations.</p>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🎯</div>
+                    <h3>Resident Enrichment</h3>
+                    <p>Special events and experiences that foster camaraderie, leadership development, and work-life balance among residents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="subtle-section">
+        <div class="container mission-container">
+            <h2>Our Mission</h2>
+            <div class="mission-text">
+                "To empower Emergency Medicine residents by providing financial support for educational advancement and wellness initiatives, fostering a community of compassionate, well-rounded physicians who excel in clinical practice and serve their communities with dedication and excellence."
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2>Make a Difference Today</h2>
+                <p>Your donation directly supports the next generation of emergency medicine physicians and their commitment to community care</p>
+
 <a href="https://givebutter.com/central-valley-physician-education-and-wellness-fund-bbji9e"
+   class="cta-button"
    target="_blank"
-   rel="noopener noreferrer"
-   class="nav-donate">
-   Donate
-</a>
-</li>
-</ul>
-</div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-<div class="hero-content">
-<h1>Empowering EM Residents Through Education & Wellness</h1>
-<p>Supporting our residency community with resources for professional development and personal wellbeing</p>
-
-<a href="https://givebutter.com/central-valley-physician-education-and-wellness-fund-bbji9e"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="cta-button">
-   Support Our Mission
-</a>
-
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-<div class="container">
-<h2>About the Fund</h2>
-
-<p>The Central Valley Physician Education and Wellness Fund is a 501(c)(3)...</p>
-
-</div>
-</section>
-
-<!-- PROGRAMS -->
-<section id="programs">
-<div class="container">
-<h2>What We Fund</h2>
-</div>
-</section>
-
-<!-- CTA -->
-<section>
-<div class="container">
-<div class="cta-section">
-
-<h2>Make a Difference Today</h2>
-<p>Your donation directly supports the next generation of emergency medicine physicians</p>
-
-<a href="https://givebutter.com/central-valley-physician-education-and-wellness-fund-bbji9e"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="cta-button">
+   rel="noopener noreferrer">
    Donate Now
 </a>
 
-</div>
-</div>
-</section>
+        </div>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact">
-<div class="container">
-<h2>Contact</h2>
-<p>Email: contact@kpcvem.org</p>
-</div>
-</section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Email</h4>
+                    <a href="mailto:contact@kpcvem.org">contact@kpcvem.org</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Location</h4>
+                    <p>Kaiser Permanente<br>Northern California</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🔗</div>
+                    <h4>Connect</h4>
+                    <p>Follow us on social media<br>for updates and stories</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-<p>&copy; 2024 Central Valley Physician Education & Wellness Fund</p>
-</footer>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Central Valley Physician Education & Wellness Fund. A 501(c)(3) nonprofit organization.</p>
+    </footer>
 </body>
 </html>
